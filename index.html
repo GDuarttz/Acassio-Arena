@@ -2,19 +2,32 @@
 <html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Melhoria: Zoom liberado para acessibilidade (removido user-scalable=no) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Acassio Arena - Seu Lazer é Aqui</title>
     <meta name="description" content="Complexo esportivo premium: Futebol Society, CT Maieski, Elite Ferraz, Atlético GCR e Arena Café.">
+    
+    <!-- Melhoria (SEO): Tags Open Graph para pré-visualização no WhatsApp e Instagram -->
+    <meta property="og:title" content="Acassio Arena - O Seu Lazer é Aqui">
+    <meta property="og:description" content="A melhor estrutura de Governador Celso Ramos. Futebol Society, CT de Areia, Artes Marciais e Gastronomia.">
+    <!-- Dica: O link da imagem usa a sua URL do GitHub Pages para o WhatsApp achar a foto -->
+    <meta property="og:image" content="https://gduarttz.github.io/Acassio-Arena/assets/fachada.jpeg">
+    <meta property="og:url" content="https://gduarttz.github.io/Acassio-Arena/">
+    <meta property="og:type" content="website">
+
     <link rel="icon" href="assets/logo_arena.png" type="image/png">
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts (Incluído o peso 700 para a fonte Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <!-- FontAwesome para Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="style.css">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <script>
         tailwind.config = {
             theme: {
@@ -34,85 +47,40 @@
             }
         }
     </script>
-
-    <style>
-        body { background-color: #0a0a0a; color: #ffffff; overflow-x: hidden; }
-        .text-neon-glow { color: #12ff00; text-shadow: 0 0 15px rgba(18, 255, 0, 0.5); }
-        .bg-nav { background-color: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #1f1f22; }
-        
-        /* SCROLLBAR CUSTOMIZADA PRETA E NEON */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #12ff00; }
-
-        /* IMAGENS DE BLOCO (Z-Pattern) */
-        .img-block { border-radius: 12px; object-fit: cover; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        
-        /* GALERIA EM GRADE PERFEITA */
-        .gallery-item { position: relative; overflow: hidden; border-radius: 12px; background: #111; cursor: pointer; }
-        .gallery-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease, opacity 0.3s ease; }
-        .gallery-item:hover .gallery-img { transform: scale(1.05); opacity: 0.85; }
-
-        /* LINKS DO MENU */
-        .nav-link { position: relative; padding-bottom: 4px; font-weight: 700; font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #a1a1aa; transition: color 0.3s; }
-
-        /* --- ANIMAÇÕES OTIMIZADAS (Mais Leves e Fluidas) --- */
-        /* Uso do will-change para o navegador usar a placa de vídeo e evitar "travadas" */
-        .reveal { 
-            opacity: 0; 
-            transform: translateY(30px); 
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
-            will-change: opacity, transform; 
-        }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .delay-100 { transition-delay: 0.1s; }
-        .delay-200 { transition-delay: 0.2s; }
-
-        /* Botão com Glow Suave */
-        .btn-glow { transition: all 0.3s ease; }
-        .btn-glow:hover { box-shadow: 0 0 25px rgba(18, 255, 0, 0.4); transform: translateY(-2px); }
-
-        /* Entrada Suave da Capa Inicial */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up { animation: fadeInUp 1s ease-out forwards; will-change: opacity, transform; }
-    </style>
 </head>
 <body class="antialiased selection:bg-arena-neon selection:text-black">
 
-    <!-- WHATSAPP FLUTUANTE COM PULSO -->
-    <a href="https://wa.me/5548984763579" target="_blank" 
-       class="fixed bottom-6 right-6 z-[60] bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-lg hover:scale-110 transition-transform btn-glow">
+    <!-- WHATSAPP FLUTUANTE COM PULSO E MENSAGEM PRÉ-PRONTA -->
+    <a href="https://wa.me/5548984763579?text=Olá!%20Acessei%20o%20site%20e%20gostaria%20de%20mais%20informações%20sobre%20a%20Acassio%20Arena." target="_blank" 
+       class="fixed bottom-6 right-6 z-[60] bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-lg hover:scale-110 transition-transform btn-glow"
+       aria-label="Falar no WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- NAVBAR -->
     <nav class="fixed w-full z-50 bg-nav transition-all duration-300 py-3 md:py-4" id="navbar">
         <div class="container mx-auto px-5 md:px-10 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-3 animate-fade-in-up">
-                <img src="assets/logo_arena.png" alt="Acassio Arena" class="h-10 w-auto rounded-full">
+            <a href="#" class="flex items-center gap-3">
+                <img src="assets/logo_arena.png" alt="Logotipo Acassio Arena" class="h-10 w-auto rounded-full">
                 <span class="font-display font-black text-lg md:text-xl tracking-widest uppercase text-white">Acassio <span class="text-neon-glow">Arena</span></span>
             </a>
 
-            <!-- Menu Desktop com as cores exclusivas aplicadas -->
-            <div class="hidden lg:flex space-x-8 items-center animate-fade-in-up delay-100">
-                <a href="#society" class="nav-link hover:text-arena-neon">Society</a>
+            <!-- Melhoria: Nomes padronizados no Menu Desktop -->
+            <div class="hidden lg:flex space-x-8 items-center">
+                <a href="#society" class="nav-link hover:text-arena-neon">Futebol Society</a>
                 <a href="#maieski" class="nav-link hover:text-maieski-pink">CT Maieski</a>
-                <a href="#lutas" class="nav-link hover:text-zinc-400">Lutas</a>
-                <a href="#escolinha" class="nav-link hover:text-atletico-blue">Atletico GCR</a>
-                <a href="#cafe" class="nav-link hover:text-cafe-gold">Café</a>
+                <a href="#lutas" class="nav-link hover:text-zinc-400">Elite Ferraz</a>
+                <a href="#escolinha" class="nav-link hover:text-atletico-blue">Atlético GCR</a>
+                <a href="#cafe" class="nav-link hover:text-cafe-gold">Arena Café</a>
                 <a href="#eventos" class="nav-link hover:text-arena-neon">Eventos</a>
             </div>
 
-            <button id="mobile-menu-btn" class="lg:hidden text-2xl text-white focus:outline-none animate-fade-in-up">
+            <button id="mobile-menu-btn" aria-label="Abrir Menu" class="lg:hidden text-2xl text-white focus:outline-none">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
         
-        <!-- Menu Mobile com as cores exclusivas aplicadas -->
+        <!-- Melhoria: Nomes padronizados no Menu Mobile -->
         <div id="mobile-menu" class="hidden lg:hidden bg-[#0a0a0a] absolute w-full left-0 top-full flex flex-col px-6 py-4 border-t border-zinc-800 h-screen overflow-y-auto pb-32">
             <a href="#society" class="mobile-link hover:text-arena-neon text-white font-display font-bold uppercase text-sm py-4 border-b border-zinc-800 flex justify-between items-center transition-colors">Futebol Society <i class="fas fa-chevron-right text-zinc-600 text-xs"></i></a>
             <a href="#maieski" class="mobile-link hover:text-maieski-pink text-white font-display font-bold uppercase text-sm py-4 border-b border-zinc-800 flex justify-between items-center transition-colors">CT Maieski <i class="fas fa-chevron-right text-zinc-600 text-xs"></i></a>
@@ -124,27 +92,28 @@
     </nav>
 
     <!-- HERO SECTION -->
-    <section class="relative h-[85svh] flex items-center justify-center pt-20 bg-zinc-900 bg-fixed" 
-             style="background-image: url('assets/fachada.jpeg'); background-size: cover; background-position: center;">
+    <section class="relative h-[85svh] flex items-center justify-center pt-20 bg-zinc-900 bg-cover bg-center" 
+             style="background-image: url('assets/fachada.jpeg');">
+        <!-- Removido o bg-fixed daqui para evitar travamento no iPhone, substituído por bg-cover -->
         <div class="absolute inset-0 bg-black/70"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent"></div>
         
         <div class="relative z-10 container mx-auto px-5 text-center flex flex-col items-center">
-            <h1 class="font-display font-black text-5xl md:text-7xl lg:text-8xl mb-4 uppercase leading-tight tracking-tighter text-white animate-fade-in-up">
+            <h1 class="font-display font-black text-5xl md:text-7xl lg:text-8xl mb-4 uppercase leading-tight tracking-tighter text-white">
                 Sua Arena.<br/>
                 <span class="text-neon-glow">Seu Momento.</span>
             </h1>
-            <p class="text-base md:text-xl text-zinc-300 max-w-2xl mx-auto mb-8 font-normal animate-fade-in-up delay-100" style="opacity:0; animation-delay: 0.2s;">
+            <p class="text-base md:text-xl text-zinc-300 max-w-2xl mx-auto mb-8 font-normal">
                 A melhor estrutura de Governador Celso Ramos.
             </p>
-            <a href="#society" class="bg-arena-neon text-black px-8 py-4 rounded font-display font-bold text-sm uppercase tracking-widest hover:bg-white btn-glow animate-fade-in-up delay-200" style="opacity:0; animation-delay: 0.4s;">
+            <a href="#society" class="bg-arena-neon text-black px-8 py-4 rounded font-display font-bold text-sm uppercase tracking-widest hover:bg-white btn-glow">
                 Conheça a Estrutura
             </a>
         </div>
     </section>
 
     <!-- HIGHLIGHTS -->
-    <section class="py-8 bg-[#0f0f0f] border-y border-zinc-800 relative z-20 reveal">
+    <section class="py-8 bg-[#0f0f0f] border-y border-zinc-800 relative z-20">
         <div class="container mx-auto px-5">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-x divide-zinc-800">
                 <div class="p-2"><h3 class="font-display font-bold text-sm uppercase text-white">Society</h3><p class="text-[11px] text-zinc-500 uppercase mt-1">Padrão FIFA</p></div>
@@ -158,11 +127,12 @@
     <!-- Z-PATTERN: SOCIETY -->
     <section id="society" class="py-16 md:py-24 bg-[#0a0a0a] overflow-hidden">
         <div class="container mx-auto px-5 md:px-10 flex flex-col lg:flex-row items-center gap-10 md:gap-16">
-            <div class="w-full lg:w-1/2 order-1 lg:order-1 reveal">
-                <img src="assets/gramado1.jpeg" alt="Futebol Society" class="img-block h-[300px] md:h-[450px]">
+            <div class="w-full lg:w-1/2 order-1 lg:order-1">
+                <!-- Melhoria: loading="lazy" adicionado nas imagens para carregar o site mais rápido -->
+                <img src="assets/gramado1.jpeg" alt="Futebol Society" class="img-block h-[300px] md:h-[450px]" loading="lazy">
             </div>
             
-            <div class="w-full lg:w-1/2 order-2 lg:order-2 reveal delay-100">
+            <div class="w-full lg:w-1/2 order-2 lg:order-2">
                 <div class="text-arena-neon font-display font-bold text-[10px] uppercase tracking-[0.2em] mb-2 border border-arena-neon/30 inline-block px-3 py-1 rounded">Estrutura Principal</div>
                 <h2 class="font-display font-black text-4xl md:text-5xl uppercase text-white mb-6 leading-none">Futebol <span class="text-arena-neon">Society</span></h2>
                 <p class="text-zinc-400 text-base leading-relaxed mb-8">
@@ -172,7 +142,7 @@
                     <li class="flex items-center gap-4 text-zinc-300 font-medium"><i class="fas fa-check text-arena-neon"></i> Vestiários completos e equipados</li>
                     <li class="flex items-center gap-4 text-zinc-300 font-medium"><i class="fas fa-check text-arena-neon"></i> Estacionamento amplo e seguro</li>
                 </ul>
-                <a href="https://wa.me/5548984763579" class="inline-flex items-center gap-2 text-white font-display font-bold uppercase text-sm border-b-2 border-arena-neon pb-1 hover:text-arena-neon transition-colors">
+                <a href="https://wa.me/5548984763579?text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20no%20Futebol%20Society." target="_blank" class="inline-flex items-center gap-2 text-white font-display font-bold uppercase text-sm border-b-2 border-arena-neon pb-1 hover:text-arena-neon transition-colors">
                     Agendar Horário <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -182,12 +152,12 @@
     <!-- Z-PATTERN: CT MAIESKI -->
     <section id="maieski" class="py-16 md:py-24 bg-[#0f0f0f] border-y border-zinc-800 overflow-hidden">
         <div class="container mx-auto px-5 md:px-10 flex flex-col lg:flex-row items-center gap-10 md:gap-16">
-            <div class="w-full lg:w-1/2 order-1 lg:order-2 reveal delay-100">
-                <img src="assets/futevolei.jpeg" alt="Futevôlei CT Maieski" class="img-block h-[300px] md:h-[450px]">
+            <div class="w-full lg:w-1/2 order-1 lg:order-2">
+                <img src="assets/futevolei.jpeg" alt="Futevôlei CT Maieski" class="img-block h-[300px] md:h-[450px]" loading="lazy">
             </div>
             
-            <div class="w-full lg:w-1/2 order-2 lg:order-1 reveal">
-                <img src="assets/logo_ctmaieski.jpg" alt="Logo CT Maieski" class="w-24 rounded-lg mb-6 shadow-lg">
+            <div class="w-full lg:w-1/2 order-2 lg:order-1">
+                <img src="assets/logo_ctmaieski.jpg" alt="Logo CT Maieski" class="w-24 rounded-lg mb-6 shadow-lg" loading="lazy">
                 <h2 class="font-display font-black text-4xl md:text-5xl uppercase text-white mb-6 leading-none">CT <span class="text-maieski-pink">Maieski</span></h2>
                 <p class="text-zinc-400 text-base leading-relaxed mb-8">
                     Sob o comando do CT MAIESKI, nossa estrutura de areia oferece a experiência definitiva para Vôlei de Areia, Beach Tennis e Futevôlei. Areia tratada e quadra de qualidade.
@@ -206,7 +176,7 @@
                         <p class="text-zinc-500 text-[11px]">Locação e Turmas</p>
                     </div>
                 </div>
-                <a href="https://wa.me/5541992832936" class="inline-flex items-center gap-2 text-white font-display font-bold uppercase text-sm border-b-2 border-maieski-pink pb-1 hover:text-maieski-pink transition-colors">
+                <a href="https://wa.me/5541992832936?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20aulas%20na%20areia%20do%20CT%20Maieski." target="_blank" class="inline-flex items-center gap-2 text-white font-display font-bold uppercase text-sm border-b-2 border-maieski-pink pb-1 hover:text-maieski-pink transition-colors">
                     Agendar Aula na Areia <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -216,12 +186,12 @@
     <!-- Z-PATTERN: ELITE FERRAZ -->
     <section id="lutas" class="py-16 md:py-24 bg-[#0a0a0a] overflow-hidden">
         <div class="container mx-auto px-5 md:px-10 flex flex-col lg:flex-row items-center gap-10 md:gap-16">
-            <div class="w-full lg:w-1/2 order-1 lg:order-1 reveal">
-                <img src="assets/muaythai2.jpeg" alt="Elite Ferraz" class="img-block h-[300px] md:h-[450px]">
+            <div class="w-full lg:w-1/2 order-1 lg:order-1">
+                <img src="assets/muaythai2.jpeg" alt="Elite Ferraz" class="img-block h-[300px] md:h-[450px]" loading="lazy">
             </div>
             
-            <div class="w-full lg:w-1/2 order-2 lg:order-2 reveal delay-100">
-                <img src="assets/logo_muaythai.jpg" alt="Logo Muay Thai" class="w-24 rounded-full mb-6 border border-zinc-700">
+            <div class="w-full lg:w-1/2 order-2 lg:order-2">
+                <img src="assets/logo_muaythai.jpg" alt="Logo Muay Thai" class="w-24 rounded-full mb-6 border border-zinc-700" loading="lazy">
                 <h2 class="font-display font-black text-4xl md:text-5xl uppercase text-white mb-6 leading-none">Elite Ferraz <br/><span class="text-zinc-500">Muay Thai</span></h2>
                 <p class="text-zinc-400 text-base leading-relaxed mb-8">
                     Força, técnica e disciplina. O Centro de Treinamento Elite Ferraz está instalado dentro da Acassio Arena, oferecendo a mais completa estrutura para artes marciais da região.
@@ -230,7 +200,7 @@
                     <li class="flex items-center gap-4 text-zinc-300 font-medium"><i class="fas fa-user-ninja text-zinc-500"></i> Turmas Adultas</li>
                     <li class="flex items-center gap-4 text-zinc-300 font-medium"><i class="fas fa-child text-zinc-500"></i>Muay Thai Infantil</li>
                 </ul>
-                <a href="https://wa.me/5548984331032" class="inline-flex items-center gap-2 text-white font-display font-bold uppercase text-sm border-b-2 border-zinc-500 pb-1 hover:text-zinc-400 transition-colors">
+                <a href="https://wa.me/5548984331032?text=Olá!%20Gostaria%20de%20marcar%20uma%20aula%20experimental%20na%20Elite%20Ferraz." target="_blank" class="inline-flex items-center gap-2 text-white font-display font-bold uppercase text-sm border-b-2 border-zinc-500 pb-1 hover:text-zinc-400 transition-colors">
                     Aula Experimental <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -240,12 +210,12 @@
     <!-- Z-PATTERN: ATLÉTICO GCR -->
     <section id="escolinha" class="py-16 md:py-24 bg-[#0f0f0f] border-y border-zinc-800 overflow-hidden">
         <div class="container mx-auto px-5 md:px-10 flex flex-col lg:flex-row items-center gap-10 md:gap-16">
-            <div class="w-full lg:w-1/2 order-1 lg:order-2 reveal delay-100">
-                <img src="assets/atletico_foto.jpeg" alt="Atlético GCR Treino" class="img-block h-[300px] md:h-[450px]">
+            <div class="w-full lg:w-1/2 order-1 lg:order-2">
+                <img src="assets/atletico_foto.jpeg" alt="Atlético GCR Treino" class="img-block h-[300px] md:h-[450px]" loading="lazy">
             </div>
             
-            <div class="w-full lg:w-1/2 order-2 lg:order-1 reveal">
-                <img src="assets/logo_atleticogcr.jpeg" alt="Logo Atlético GCR" class="w-24 rounded-lg mb-6">
+            <div class="w-full lg:w-1/2 order-2 lg:order-1">
+                <img src="assets/logo_atleticogcr.jpeg" alt="Logo Atlético GCR" class="w-24 rounded-lg mb-6" loading="lazy">
                 <h2 class="font-display font-black text-4xl md:text-5xl uppercase text-white mb-6 leading-none">Atlético <span class="text-atletico-blue">GCR</span></h2>
                 <p class="text-zinc-400 text-base leading-relaxed mb-6">
                     A Acassio Arena é a sede oficial do projeto que forma muito mais que atletas. Foco total no desenvolvimento tático, técnico e cidadão das crianças.
@@ -254,7 +224,7 @@
                     <span class="bg-zinc-800 text-zinc-300 text-xs font-bold uppercase px-3 py-1.5 rounded border border-zinc-700">Treinadores Qualificados</span>
                     <span class="bg-zinc-800 text-zinc-300 text-xs font-bold uppercase px-3 py-1.5 rounded border border-zinc-700">Divisão por Idade</span>
                 </div>
-                <a href="https://wa.me/5551999415579" class="inline-flex items-center gap-2 text-white font-display font-bold uppercase text-sm border-b-2 border-atletico-blue pb-1 hover:text-atletico-blue transition-colors">
+                <a href="https://wa.me/5551999415579?text=Olá!%20Gostaria%20de%20informações%20sobre%20a%20matrícula%20no%20Atlético%20GCR." target="_blank" class="inline-flex items-center gap-2 text-white font-display font-bold uppercase text-sm border-b-2 border-atletico-blue pb-1 hover:text-atletico-blue transition-colors">
                     Informações de Matrícula <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -264,12 +234,12 @@
     <!-- Z-PATTERN: ARENA CAFÉ -->
     <section id="cafe" class="py-16 md:py-24 bg-[#0a0a0a] overflow-hidden">
         <div class="container mx-auto px-5 md:px-10 flex flex-col lg:flex-row items-center gap-10 md:gap-16">
-            <div class="w-full lg:w-1/2 order-1 lg:order-1 reveal">
-                <img src="assets/arenacafe_lazer.jpeg" alt="Interior Arena Café" class="img-block h-[300px] md:h-[450px]">
+            <div class="w-full lg:w-1/2 order-1 lg:order-1">
+                <img src="assets/arenacafe_lazer.jpeg" alt="Interior Arena Café" class="img-block h-[300px] md:h-[450px]" loading="lazy">
             </div>
             
-            <div class="w-full lg:w-1/2 order-2 lg:order-2 reveal delay-100">
-                <img src="assets/logo_arenacafe.jpg" alt="Logo Arena Café" class="w-24 rounded-full mb-6 shadow-lg">
+            <div class="w-full lg:w-1/2 order-2 lg:order-2">
+                <img src="assets/logo_arenacafe.jpg" alt="Logo Arena Café" class="w-24 rounded-full mb-6 shadow-lg" loading="lazy">
                 <h2 class="font-display font-black text-4xl md:text-5xl uppercase text-white mb-6 leading-none">Arena Café <br/><span class="text-cafe-gold">& Sucos</span></h2>
                 <p class="text-zinc-400 text-base leading-relaxed mb-8">
                     Anexo ao complexo, é o ambiente perfeito para a resenha pós-treino com sinuca, bebidas geladas e gastronomia de qualidade.
@@ -283,7 +253,7 @@
     </section>
 
     <!-- EVENTOS -->
-    <section id="eventos" class="py-16 md:py-24 bg-[#0f0f0f] border-y border-zinc-800 reveal">
+    <section id="eventos" class="py-16 md:py-24 bg-[#0f0f0f] border-y border-zinc-800">
         <div class="container mx-auto px-5 text-center max-w-4xl">
             <div class="text-arena-neon font-display font-bold text-[10px] uppercase tracking-[0.2em] mb-4 inline-block">Locação de Espaço</div>
             <h2 class="font-display font-black text-4xl md:text-5xl uppercase text-white mb-6">O Palco do <span class="text-arena-neon">Seu Evento</span></h2>
@@ -291,9 +261,9 @@
                 Confraternizações empresariais, aniversários ou torneios. Oferecemos infraestrutura autônoma completa: Área Gourmet, churrasqueira, vestiários e proteção coberta para que seu evento seja inesquecível.
             </p>
             
-            <img src="assets/levantandotrofeu.jpeg" alt="Comemoração e Eventos" class="img-block h-[250px] md:h-[450px] mb-10 object-center">
+            <img src="assets/levantandotrofeu.jpeg" alt="Comemoração e Eventos" class="img-block h-[250px] md:h-[450px] mb-10 object-center" loading="lazy">
 
-            <a href="https://wa.me/5548984763579" class="bg-white text-black px-8 py-4 rounded font-display font-bold text-sm uppercase tracking-widest hover:bg-arena-neon btn-glow transition-colors inline-block">
+            <a href="https://wa.me/5548984763579?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20realizar%20um%20evento%20na%20Arena." target="_blank" class="bg-white text-black px-8 py-4 rounded font-display font-bold text-sm uppercase tracking-widest hover:bg-arena-neon btn-glow transition-colors inline-block">
                 Solicitar Orçamento
             </a>
         </div>
@@ -302,7 +272,7 @@
     <!-- GALERIA -->
     <section id="galeria" class="py-16 md:py-24 bg-[#0a0a0a]">
         <div class="container mx-auto px-5 md:px-10">
-            <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 gap-4 text-center md:text-left reveal">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 gap-4 text-center md:text-left">
                 <h2 class="font-display font-black text-3xl md:text-4xl uppercase text-white">Nossa <span class="text-zinc-500">Galeria</span></h2>
                 <a href="https://www.instagram.com/acassioarena/?hl=en" target="_blank" class="text-white font-display font-bold text-xs uppercase tracking-widest hover:text-arena-neon transition-colors">
                     Ver Instagram <i class="fab fa-instagram ml-1"></i>
@@ -310,37 +280,32 @@
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="gallery-item h-56 md:h-80 reveal"><img src="assets/femaqvscunha.jpeg" alt="Competição" class="gallery-img object-center"></div>
-                <div class="gallery-item h-56 md:h-80 reveal delay-100"><img src="assets/açai.jpeg" alt="Açaí Arena Café" class="gallery-img object-center"></div>
-                <div class="gallery-item h-56 md:h-80 reveal delay-200"><img src="assets/drinks.jpeg" alt="Drinks Arena Café" class="gallery-img object-center"></div>
-                <div class="gallery-item h-56 md:h-80 reveal delay-100"><img src="assets/porção.jpeg" alt="Porção de Fritas" class="gallery-img object-center"></div>
-                <div class="gallery-item h-56 md:h-80 reveal"><img src="assets/churrasqueira.jpeg" alt="Churrasqueira Eventos" class="gallery-img object-center"></div>
-                <div class="gallery-item h-56 md:h-80 reveal delay-100"><img src="assets/arenacafe_lazer2.jpeg" alt="Área Externa Lazer" class="gallery-img object-center"></div>
-                <div class="gallery-item h-56 md:h-80 reveal delay-200"><img src="assets/atletico_foto2.jpeg" alt="Time Atlético GCR" class="gallery-img object-center"></div>
-                <div class="gallery-item h-56 md:h-80 reveal delay-100"><img src="assets/quadra_vistadecima.jpeg" alt="CT Maieski Vista Superior" class="gallery-img object-center"></div>
+                <div class="gallery-item h-56 md:h-80"><img src="assets/femaqvscunha.jpeg" alt="Competição" class="gallery-img object-center" loading="lazy"></div>
+                <!-- Melhoria Crítica: Nomes de arquivos ajustados para sem acento e sem cedilha -->
+                <div class="gallery-item h-56 md:h-80"><img src="assets/acai.jpeg" alt="Açaí Arena Café" class="gallery-img object-center" loading="lazy"></div>
+                <div class="gallery-item h-56 md:h-80"><img src="assets/drinks.jpeg" alt="Drinks Arena Café" class="gallery-img object-center" loading="lazy"></div>
+                <div class="gallery-item h-56 md:h-80"><img src="assets/porcao.jpeg" alt="Porção de Fritas" class="gallery-img object-center" loading="lazy"></div>
+                <!-- Fim da Melhoria -->
+                <div class="gallery-item h-56 md:h-80"><img src="assets/churrasqueira.jpeg" alt="Churrasqueira Eventos" class="gallery-img object-center" loading="lazy"></div>
+                <div class="gallery-item h-56 md:h-80"><img src="assets/arenacafe_lazer2.jpeg" alt="Área Externa Lazer" class="gallery-img object-center" loading="lazy"></div>
+                <div class="gallery-item h-56 md:h-80"><img src="assets/atletico_foto2.jpeg" alt="Time Atlético GCR" class="gallery-img object-center" loading="lazy"></div>
+                <div class="gallery-item h-56 md:h-80"><img src="assets/quadra_vistadecima.jpeg" alt="CT Maieski Vista Superior" class="gallery-img object-center" loading="lazy"></div>
             </div>
         </div>
     </section>
 
-    <!-- GOOGLE AVALIAÇÕES -->
-    <section class="py-16 md:py-24 bg-[#0f0f0f] border-t border-zinc-800 reveal">
+    <!-- AVALIAÇÕES (Ajustado para evitar problemas no Procon/CDC) -->
+    <section class="py-16 md:py-24 bg-[#0f0f0f] border-t border-zinc-800">
         <div class="container mx-auto px-5 md:px-10 text-center">
             
             <div class="mb-12">
-                <div class="text-google-blue font-display font-bold text-[10px] uppercase tracking-[0.2em] mb-2 inline-block"><i class="fab fa-google"></i> Avaliações Reais</div>
+                <div class="text-google-blue font-display font-bold text-[10px] uppercase tracking-[0.2em] mb-2 inline-block"><i class="fas fa-comment"></i> Depoimentos</div>
                 <h2 class="font-display font-black text-3xl md:text-4xl uppercase text-white mb-4">Aprovado por <span class="text-google-yellow">Quem Joga</span></h2>
-                
-                <div class="flex items-center justify-center gap-3 mt-4">
-                    <span class="text-3xl font-bold text-white">4.8</span>
-                    <div class="text-google-yellow text-lg">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <p class="text-zinc-500 text-xs mt-2 uppercase tracking-widest">Baseado no Google Maps</p>
+                <p class="text-zinc-500 text-xs mt-2 uppercase tracking-widest">Opinião dos nossos clientes</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mb-10 max-w-6xl mx-auto">
-                <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800 flex flex-col justify-between reveal">
+                <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800 flex flex-col justify-between">
                     <div>
                         <div class="text-google-yellow text-sm mb-4">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -356,7 +321,7 @@
                     </div>
                 </div>
 
-                <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800 flex flex-col justify-between reveal delay-100">
+                <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800 flex flex-col justify-between">
                     <div>
                         <div class="text-google-yellow text-sm mb-4">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -372,7 +337,7 @@
                     </div>
                 </div>
 
-                <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800 flex flex-col justify-between reveal delay-200">
+                <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800 flex flex-col justify-between">
                     <div>
                         <div class="text-google-yellow text-sm mb-4">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -396,7 +361,7 @@
         <div class="container mx-auto px-5 md:px-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 
-                <div class="text-left reveal">
+                <div class="text-left">
                     <h2 class="font-display font-black text-4xl md:text-5xl uppercase text-white mb-10 leading-none">Visite a <br/><span class="text-arena-neon">Arena</span></h2>
                     
                     <div class="space-y-6 mb-10">
@@ -410,17 +375,23 @@
                         </div>
                         <div>
                             <h4 class="font-display font-bold text-white text-sm uppercase tracking-widest mb-1 text-zinc-500">Horário</h4>
-                            <p class="text-white text-base">Segunda a Sexta: 15h30 às 23h30</p>
+                            <p class="text-white text-base">
+                                <span class="font-bold text-arena-neon">Society:</span> Seg a Sex das 17h às 01h | Sáb, Dom e Feriados das 10h às 20h
+                            </p>
+                            <p class="text-white text-base mt-2">
+                                <span class="font-bold text-maieski-pink">Areia:</span> Todos os dias das 10h às 22h
+                            </p>
                         </div>
                     </div>
 
-                    <a href="https://wa.me/5548984763579" target="_blank" class="inline-flex bg-[#25D366] text-white px-8 py-4 rounded font-display font-bold text-sm uppercase tracking-widest hover:bg-[#1da851] transition-colors items-center gap-3 btn-glow">
+                    <a href="https://wa.me/5548984763579?text=Olá!%20Quero%20falar%20com%20o%20atendimento%20da%20Acassio%20Arena." target="_blank" class="inline-flex bg-[#25D366] text-white px-8 py-4 rounded font-display font-bold text-sm uppercase tracking-widest hover:bg-[#1da851] transition-colors items-center gap-3 btn-glow">
                         <i class="fab fa-whatsapp text-lg"></i> Falar no WhatsApp
                     </a>
                 </div>
 
-                <div class="w-full h-[350px] md:h-[450px] rounded-xl overflow-hidden shadow-2xl reveal delay-100">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1252.666800603791!2d-48.60931429556765!3d-27.373318152911953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9527513aead88635%3A0xbb8e65a240e52d59!2sAcassio%20Arena%20Esporte%20e%20Lazer!5e0!3m2!1spt-BR!2sbr!4v1792092561783!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="grayscale hover:grayscale-0 transition-all duration-500"></iframe>
+                <div class="w-full h-[350px] md:h-[450px] rounded-xl overflow-hidden shadow-2xl">
+                    <!-- Melhoria de acessibilidade no mapa (title) -->
+                    <iframe title="Mapa de localização da Acassio Arena" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1252.666800603791!2d-48.60931429556765!3d-27.373318152911953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9527513aead88635%3A0xbb8e65a240e52d59!2sAcassio%20Arena%20Esporte%20e%20Lazer!5e0!3m2!1spt-BR!2sbr!4v1792092561783!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="grayscale hover:grayscale-0 transition-all duration-500"></iframe>
                 </div>
 
             </div>
@@ -428,7 +399,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-black py-10 border-t border-zinc-800 reveal">
+    <footer class="bg-black py-10 border-t border-zinc-800">
         <div class="container mx-auto px-5 md:px-10">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 
@@ -438,71 +409,20 @@
                 </div>
 
                 <div class="flex space-x-6">
-                    <a href="https://www.instagram.com/acassioarena/?hl=en" target="_blank" class="text-zinc-600 hover:text-white transition-colors text-xl"><i class="fab fa-instagram"></i></a>
-                    <a href="https://facebook.com" target="_blank" class="text-zinc-600 hover:text-white transition-colors text-xl"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/acassioarena/?hl=en" target="_blank" aria-label="Instagram" class="text-zinc-600 hover:text-white transition-colors text-xl"><i class="fab fa-instagram"></i></a>
+                    <!-- Removido o link solto do facebook que ia pra home. Se quiser colocar de volta, basta preencher o href com o link da página do cliente -->
                 </div>
 
             </div>
             
-            <div class="mt-8 pt-6 border-t border-zinc-900 text-center md:text-left text-[10px] text-zinc-700 uppercase tracking-widest font-bold">
+            <!-- Melhoria de Contraste: Texto do desenvolvedor agora está mais legível (zinc-500) -->
+            <div class="mt-8 pt-6 border-t border-zinc-900 text-center md:text-left text-xs text-zinc-500 uppercase tracking-widest font-bold">
                 Desenvolvido por <span class="text-arena-neon">Gustavo Duarte</span>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Menu Mobile Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        const icon = btn.querySelector('i');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        function toggleMenu() {
-            menu.classList.toggle('hidden');
-            if (menu.classList.contains('hidden')) {
-                icon.classList.replace('fa-times', 'fa-bars');
-                document.body.style.overflow = 'auto'; 
-            } else {
-                icon.classList.replace('fa-bars', 'fa-times');
-                document.body.style.overflow = 'hidden'; 
-            }
-        }
-
-        btn.addEventListener('click', toggleMenu);
-        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
-
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 40) {
-                navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.98)';
-                navbar.style.borderBottom = '1px solid #12ff0033';
-            } else {
-                navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
-                navbar.style.borderBottom = '1px solid #1f1f22';
-            }
-        });
-
-        // Efeito Reveal (Otimizado para performance mais rápida)
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px 0px -50px 0px', // Aciona a animação um pouco mais cedo
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target); // Anima só na primeira vez
-                    }
-                });
-            }, observerOptions);
-
-            const revealElements = document.querySelectorAll('.reveal');
-            revealElements.forEach(el => observer.observe(el));
-        });
-    </script>
+    <!-- JS Externo -->
+    <script src="script.js"></script>
 </body>
 </html>
