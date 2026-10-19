@@ -2,30 +2,25 @@
 <html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <!-- Melhoria: Zoom liberado para acessibilidade (removido user-scalable=no) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Acassio Arena - Seu Lazer é Aqui</title>
     <meta name="description" content="Complexo esportivo premium: Futebol Society, CT Maieski, Elite Ferraz, Atlético GCR e Arena Café.">
     
-    <!-- Melhoria (SEO): Tags Open Graph para pré-visualização no WhatsApp e Instagram -->
+    <!-- Tags Open Graph (Preview em redes sociais) -->
     <meta property="og:title" content="Acassio Arena - O Seu Lazer é Aqui">
     <meta property="og:description" content="A melhor estrutura de Governador Celso Ramos. Futebol Society, CT de Areia, Artes Marciais e Gastronomia.">
-    <!-- Dica: O link da imagem usa a sua URL do GitHub Pages para o WhatsApp achar a foto -->
     <meta property="og:image" content="https://gduarttz.github.io/Acassio-Arena/assets/fachada.jpeg">
     <meta property="og:url" content="https://gduarttz.github.io/Acassio-Arena/">
     <meta property="og:type" content="website">
 
     <link rel="icon" href="assets/logo_arena.png" type="image/png">
     
-    <!-- Google Fonts (Incluído o peso 700 para a fonte Inter) -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <!-- FontAwesome para Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- CSS Externo -->
-    <link rel="stylesheet" href="style.css">
-
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -47,10 +42,84 @@
             }
         }
     </script>
+
+    <!-- ESTILOS INTERNOS (CSS) -->
+    <style>
+        body { 
+            background-color: #0a0a0a; 
+            color: #ffffff; 
+            overflow-x: hidden; 
+        }
+
+        .text-neon-glow { 
+            color: #12ff00; 
+            text-shadow: 0 0 15px rgba(18, 255, 0, 0.5); 
+        }
+
+        .bg-nav { 
+            background-color: rgba(10, 10, 10, 0.95); 
+            backdrop-filter: blur(10px); 
+            border-bottom: 1px solid #1f1f22; 
+        }
+
+        /* SCROLLBAR CUSTOMIZADA PRETA E NEON */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #12ff00; }
+
+        /* IMAGENS DE BLOCO */
+        .img-block { 
+            border-radius: 12px; 
+            object-fit: cover; 
+            width: 100%; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+        }
+
+        /* GALERIA EM GRADE PERFEITA */
+        .gallery-item { 
+            position: relative; 
+            overflow: hidden; 
+            border-radius: 12px; 
+            background: #111; 
+            cursor: pointer; 
+        }
+        .gallery-img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.4s ease; 
+        }
+        .gallery-item:hover .gallery-img { 
+            transform: scale(1.05); 
+        }
+
+        /* LINKS DO MENU */
+        .nav-link { 
+            position: relative; 
+            padding-bottom: 4px; 
+            font-weight: 700; 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 11px; 
+            letter-spacing: 0.1em; 
+            text-transform: uppercase; 
+            color: #a1a1aa; 
+            transition: color 0.3s; 
+        }
+
+        /* BOTÃO COM GLOW SUAVE */
+        .btn-glow { 
+            transition: all 0.3s ease; 
+        }
+        .btn-glow:hover { 
+            box-shadow: 0 0 25px rgba(18, 255, 0, 0.4); 
+            transform: translateY(-2px); 
+        }
+    </style>
 </head>
 <body class="antialiased selection:bg-arena-neon selection:text-black">
 
-    <!-- WHATSAPP FLUTUANTE COM PULSO E MENSAGEM PRÉ-PRONTA -->
+    <!-- WHATSAPP FLUTUANTE -->
     <a href="https://wa.me/5548984763579?text=Olá!%20Acessei%20o%20site%20e%20gostaria%20de%20mais%20informações%20sobre%20a%20Acassio%20Arena." target="_blank" 
        class="fixed bottom-6 right-6 z-[60] bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-lg hover:scale-110 transition-transform btn-glow"
        aria-label="Falar no WhatsApp">
@@ -65,7 +134,7 @@
                 <span class="font-display font-black text-lg md:text-xl tracking-widest uppercase text-white">Acassio <span class="text-neon-glow">Arena</span></span>
             </a>
 
-            <!-- Melhoria: Nomes padronizados no Menu Desktop -->
+            <!-- Menu Desktop -->
             <div class="hidden lg:flex space-x-8 items-center">
                 <a href="#society" class="nav-link hover:text-arena-neon">Futebol Society</a>
                 <a href="#maieski" class="nav-link hover:text-maieski-pink">CT Maieski</a>
@@ -80,7 +149,7 @@
             </button>
         </div>
         
-        <!-- Melhoria: Nomes padronizados no Menu Mobile -->
+        <!-- Menu Mobile -->
         <div id="mobile-menu" class="hidden lg:hidden bg-[#0a0a0a] absolute w-full left-0 top-full flex flex-col px-6 py-4 border-t border-zinc-800 h-screen overflow-y-auto pb-32">
             <a href="#society" class="mobile-link hover:text-arena-neon text-white font-display font-bold uppercase text-sm py-4 border-b border-zinc-800 flex justify-between items-center transition-colors">Futebol Society <i class="fas fa-chevron-right text-zinc-600 text-xs"></i></a>
             <a href="#maieski" class="mobile-link hover:text-maieski-pink text-white font-display font-bold uppercase text-sm py-4 border-b border-zinc-800 flex justify-between items-center transition-colors">CT Maieski <i class="fas fa-chevron-right text-zinc-600 text-xs"></i></a>
@@ -94,7 +163,6 @@
     <!-- HERO SECTION -->
     <section class="relative h-[85svh] flex items-center justify-center pt-20 bg-zinc-900 bg-cover bg-center" 
              style="background-image: url('assets/fachada.jpeg');">
-        <!-- Removido o bg-fixed daqui para evitar travamento no iPhone, substituído por bg-cover -->
         <div class="absolute inset-0 bg-black/70"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent"></div>
         
@@ -128,7 +196,6 @@
     <section id="society" class="py-16 md:py-24 bg-[#0a0a0a] overflow-hidden">
         <div class="container mx-auto px-5 md:px-10 flex flex-col lg:flex-row items-center gap-10 md:gap-16">
             <div class="w-full lg:w-1/2 order-1 lg:order-1">
-                <!-- Melhoria: loading="lazy" adicionado nas imagens para carregar o site mais rápido -->
                 <img src="assets/gramado1.jpeg" alt="Futebol Society" class="img-block h-[300px] md:h-[450px]" loading="lazy">
             </div>
             
@@ -281,11 +348,9 @@
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="gallery-item h-56 md:h-80"><img src="assets/femaqvscunha.jpeg" alt="Competição" class="gallery-img object-center" loading="lazy"></div>
-                <!-- Melhoria Crítica: Nomes de arquivos ajustados para sem acento e sem cedilha -->
                 <div class="gallery-item h-56 md:h-80"><img src="assets/acai.jpeg" alt="Açaí Arena Café" class="gallery-img object-center" loading="lazy"></div>
                 <div class="gallery-item h-56 md:h-80"><img src="assets/drinks.jpeg" alt="Drinks Arena Café" class="gallery-img object-center" loading="lazy"></div>
                 <div class="gallery-item h-56 md:h-80"><img src="assets/porcao.jpeg" alt="Porção de Fritas" class="gallery-img object-center" loading="lazy"></div>
-                <!-- Fim da Melhoria -->
                 <div class="gallery-item h-56 md:h-80"><img src="assets/churrasqueira.jpeg" alt="Churrasqueira Eventos" class="gallery-img object-center" loading="lazy"></div>
                 <div class="gallery-item h-56 md:h-80"><img src="assets/arenacafe_lazer2.jpeg" alt="Área Externa Lazer" class="gallery-img object-center" loading="lazy"></div>
                 <div class="gallery-item h-56 md:h-80"><img src="assets/atletico_foto2.jpeg" alt="Time Atlético GCR" class="gallery-img object-center" loading="lazy"></div>
@@ -294,7 +359,7 @@
         </div>
     </section>
 
-    <!-- AVALIAÇÕES (Ajustado para evitar problemas no Procon/CDC) -->
+    <!-- AVALIAÇÕES -->
     <section class="py-16 md:py-24 bg-[#0f0f0f] border-t border-zinc-800">
         <div class="container mx-auto px-5 md:px-10 text-center">
             
@@ -390,7 +455,6 @@
                 </div>
 
                 <div class="w-full h-[350px] md:h-[450px] rounded-xl overflow-hidden shadow-2xl">
-                    <!-- Melhoria de acessibilidade no mapa (title) -->
                     <iframe title="Mapa de localização da Acassio Arena" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1252.666800603791!2d-48.60931429556765!3d-27.373318152911953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9527513aead88635%3A0xbb8e65a240e52d59!2sAcassio%20Arena%20Esporte%20e%20Lazer!5e0!3m2!1spt-BR!2sbr!4v1792092561783!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="grayscale hover:grayscale-0 transition-all duration-500"></iframe>
                 </div>
 
@@ -410,19 +474,50 @@
 
                 <div class="flex space-x-6">
                     <a href="https://www.instagram.com/acassioarena/?hl=en" target="_blank" aria-label="Instagram" class="text-zinc-600 hover:text-white transition-colors text-xl"><i class="fab fa-instagram"></i></a>
-                    <!-- Removido o link solto do facebook que ia pra home. Se quiser colocar de volta, basta preencher o href com o link da página do cliente -->
                 </div>
 
             </div>
             
-            <!-- Melhoria de Contraste: Texto do desenvolvedor agora está mais legível (zinc-500) -->
             <div class="mt-8 pt-6 border-t border-zinc-900 text-center md:text-left text-xs text-zinc-500 uppercase tracking-widest font-bold">
                 Desenvolvido por <span class="text-arena-neon">Gustavo Duarte</span>
             </div>
         </div>
     </footer>
 
-    <!-- JS Externo -->
-    <script src="script.js"></script>
+    <!-- COMPORTAMENTO INTERNO (JAVASCRIPT) -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = btn ? btn.querySelector('i') : null;
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            if (!menu || !icon) return;
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.replace('fa-times', 'fa-bars');
+                document.body.style.overflow = 'auto'; 
+            } else {
+                icon.classList.replace('fa-bars', 'fa-times');
+                document.body.style.overflow = 'hidden'; 
+            }
+        }
+
+        if (btn) btn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 40) {
+                    navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.98)';
+                    navbar.style.borderBottom = '1px solid #12ff0033';
+                } else {
+                    navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
+                    navbar.style.borderBottom = '1px solid #1f1f22';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
