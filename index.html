@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR" class="scroll-smooth scroll-pt-24">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,7 +43,7 @@
         }
     </script>
 
-    <!-- ESTILOS INTERNOS (CSS) -->
+    <!-- ESTILOS INTERNOS (CSS) COM MICRO-ANIMAÇÕES FLUIDAS -->
     <style>
         body { 
             background-color: #0a0a0a; 
@@ -58,8 +58,9 @@
 
         .bg-nav { 
             background-color: rgba(10, 10, 10, 0.95); 
-            backdrop-filter: blur(10px); 
-            border-bottom: 1px solid #1f1f22; 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
         }
 
         /* SCROLLBAR CUSTOMIZADA PRETA E NEON */
@@ -68,15 +69,20 @@
         ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #12ff00; }
 
-        /* IMAGENS DE BLOCO */
+        /* IMAGENS DE BLOCO E EFEITOS DE HOVER */
         .img-block { 
             border-radius: 12px; 
             object-fit: cover; 
             width: 100%; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        }
+        .img-block:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 15px 35px rgba(18, 255, 0, 0.15);
         }
 
-        /* GALERIA EM GRADE PERFEITA */
+        /* GALERIA EM GRADE PERFEITA COM EFEITO DE ZOOM */
         .gallery-item { 
             position: relative; 
             overflow: hidden; 
@@ -88,13 +94,14 @@
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            transition: transform 0.4s ease; 
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease; 
         }
         .gallery-item:hover .gallery-img { 
-            transform: scale(1.05); 
+            transform: scale(1.08); 
+            filter: brightness(1.1);
         }
 
-        /* LINKS DO MENU */
+        /* LINKS DO MENU COM INDICADOR DESLIZANTE */
         .nav-link { 
             position: relative; 
             padding-bottom: 4px; 
@@ -104,12 +111,47 @@
             letter-spacing: 0.1em; 
             text-transform: uppercase; 
             color: #a1a1aa; 
-            transition: color 0.3s; 
+            transition: color 0.3s ease; 
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: #12ff00;
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-link:hover::after {
+            width: 100%;
         }
 
-        /* BOTÃO COM GLOW SUAVE */
+        /* CARTÕES DE AVALIAÇÃO / SERVIÇOS */
+        .card-hover {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        /* BOTÃO COM GLOW E ANIMAÇÃO DE PULSO */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(37, 211, 102, 0.75); }
+        }
+        .btn-whatsapp-pulse { 
+            animation: pulse-glow 3s infinite ease-in-out;
+            transition: transform 0.3s ease;
+        }
+        .btn-whatsapp-pulse:hover {
+            transform: scale(1.1);
+        }
+
         .btn-glow { 
-            transition: all 0.3s ease; 
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
         }
         .btn-glow:hover { 
             box-shadow: 0 0 25px rgba(18, 255, 0, 0.4); 
@@ -119,9 +161,9 @@
 </head>
 <body class="antialiased selection:bg-arena-neon selection:text-black">
 
-    <!-- WHATSAPP FLUTUANTE -->
+    <!-- WHATSAPP FLUTUANTE COM ANIMAÇÃO DE PULSO -->
     <a href="https://wa.me/5548984763579?text=Olá!%20Acessei%20o%20site%20e%20gostaria%20de%20mais%20informações%20sobre%20a%20Acassio%20Arena." target="_blank" 
-       class="fixed bottom-6 right-6 z-[60] bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-lg hover:scale-110 transition-transform btn-glow"
+       class="fixed bottom-6 right-6 z-[60] bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-lg btn-whatsapp-pulse"
        aria-label="Falar no WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -129,8 +171,8 @@
     <!-- NAVBAR -->
     <nav class="fixed w-full z-50 bg-nav transition-all duration-300 py-3 md:py-4" id="navbar">
         <div class="container mx-auto px-5 md:px-10 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-3">
-                <img src="assets/logo_arena.png" alt="Logotipo Acassio Arena" class="h-10 w-auto rounded-full">
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="assets/logo_arena.png" alt="Logotipo Acassio Arena" class="h-10 w-auto rounded-full transition-transform duration-300 group-hover:scale-105">
                 <span class="font-display font-black text-lg md:text-xl tracking-widest uppercase text-white">Acassio <span class="text-neon-glow">Arena</span></span>
             </a>
 
@@ -144,7 +186,7 @@
                 <a href="#eventos" class="nav-link hover:text-arena-neon">Eventos</a>
             </div>
 
-            <button id="mobile-menu-btn" aria-label="Abrir Menu" class="lg:hidden text-2xl text-white focus:outline-none">
+            <button id="mobile-menu-btn" aria-label="Abrir Menu" class="lg:hidden text-2xl text-white focus:outline-none transition-transform active:scale-95">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
@@ -164,7 +206,7 @@
     <section class="relative h-[85svh] flex items-center justify-center pt-20 bg-zinc-900 bg-cover bg-center" 
              style="background-image: url('assets/fachada.jpeg');">
         <div class="absolute inset-0 bg-black/70"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-black/40"></div>
         
         <div class="relative z-10 container mx-auto px-5 text-center flex flex-col items-center">
             <h1 class="font-display font-black text-5xl md:text-7xl lg:text-8xl mb-4 uppercase leading-tight tracking-tighter text-white">
@@ -184,10 +226,10 @@
     <section class="py-8 bg-[#0f0f0f] border-y border-zinc-800 relative z-20">
         <div class="container mx-auto px-5">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-x divide-zinc-800">
-                <div class="p-2"><h3 class="font-display font-bold text-sm uppercase text-white">Society</h3><p class="text-[11px] text-zinc-500 uppercase mt-1">Padrão FIFA</p></div>
-                <div class="p-2"><h3 class="font-display font-bold text-sm uppercase text-white">Areia</h3><p class="text-[11px] text-zinc-500 uppercase mt-1">CT Maieski</p></div>
-                <div class="p-2"><h3 class="font-display font-bold text-sm uppercase text-white">Lutas</h3><p class="text-[11px] text-zinc-500 uppercase mt-1">Elite Ferraz</p></div>
-                <div class="p-2"><h3 class="font-display font-bold text-sm uppercase text-white">Gastronomia</h3><p class="text-[11px] text-zinc-500 uppercase mt-1">Arena Café</p></div>
+                <div class="p-2 group"><h3 class="font-display font-bold text-sm uppercase text-white group-hover:text-arena-neon transition-colors">Society</h3><p class="text-[11px] text-zinc-500 uppercase mt-1">Padrão FIFA</p></div>
+                <div class="p-2 group"><h3 class="font-display font-bold text-sm uppercase text-white group-hover:text-maieski-pink transition-colors">Areia</h3><p class="text-[11px] text-zinc-500 uppercase mt-1">CT Maieski</p></div>
+                <div class="p-2 group"><h3 class="font-display font-bold text-sm uppercase text-white group-hover:text-zinc-400 transition-colors">Lutas</h3><p class="text-[11px] text-zinc-500 uppercase mt-1">Elite Ferraz</p></div>
+                <div class="p-2 group"><h3 class="font-display font-bold text-sm uppercase text-white group-hover:text-cafe-gold transition-colors">Gastronomia</h3><p class="text-[11px] text-zinc-500 uppercase mt-1">Arena Café</p></div>
             </div>
         </div>
     </section>
@@ -196,7 +238,7 @@
     <section id="society" class="py-16 md:py-24 bg-[#0a0a0a] overflow-hidden">
         <div class="container mx-auto px-5 md:px-10 flex flex-col lg:flex-row items-center gap-10 md:gap-16">
             <div class="w-full lg:w-1/2 order-1 lg:order-1">
-                <img src="assets/gramado1.jpeg" alt="Futebol Society" class="img-block h-[300px] md:h-[450px]" loading="lazy">
+                <img src="assets/gramado2.jpeg" alt="Futebol Society" class="img-block h-[300px] md:h-[450px]" loading="lazy">
             </div>
             
             <div class="w-full lg:w-1/2 order-2 lg:order-2">
@@ -209,8 +251,8 @@
                     <li class="flex items-center gap-4 text-zinc-300 font-medium"><i class="fas fa-check text-arena-neon"></i> Vestiários completos e equipados</li>
                     <li class="flex items-center gap-4 text-zinc-300 font-medium"><i class="fas fa-check text-arena-neon"></i> Estacionamento amplo e seguro</li>
                 </ul>
-                <a href="https://wa.me/5548984763579?text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20no%20Futebol%20Society." target="_blank" class="inline-flex items-center gap-2 text-white font-display font-bold uppercase text-sm border-b-2 border-arena-neon pb-1 hover:text-arena-neon transition-colors">
-                    Agendar Horário <i class="fas fa-arrow-right"></i>
+                <a href="https://wa.me/5548984763579?text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20no%20Futebol%20Society." target="_blank" class="inline-flex items-center gap-2 text-white font-display font-bold uppercase text-sm border-b-2 border-arena-neon pb-1 hover:text-arena-neon transition-colors group">
+                    Agendar Horário <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
                 </a>
             </div>
         </div>
@@ -230,21 +272,21 @@
                     Sob o comando do CT MAIESKI, nossa estrutura de areia oferece a experiência definitiva para Vôlei de Areia, Beach Tennis e Futevôlei. Areia tratada e quadra de qualidade.
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                    <div class="bg-zinc-800 p-4 rounded-lg border border-zinc-700">
+                    <div class="bg-zinc-800 p-4 rounded-lg border border-zinc-700 card-hover">
                         <h4 class="font-display font-bold text-white text-[13px] uppercase mb-1">Vôlei</h4>
                         <p class="text-zinc-500 text-[11px]">Jogos e Treinos</p>
                     </div>
-                    <div class="bg-zinc-800 p-4 rounded-lg border border-zinc-700">
+                    <div class="bg-zinc-800 p-4 rounded-lg border border-zinc-700 card-hover">
                         <h4 class="font-display font-bold text-white text-[13px] uppercase mb-1">Futevôlei</h4>
                         <p class="text-zinc-500 text-[11px]">Técnica e Dinâmica</p>
                     </div>
-                    <div class="bg-zinc-800 p-4 rounded-lg border border-zinc-700">
+                    <div class="bg-zinc-800 p-4 rounded-lg border border-zinc-700 card-hover">
                         <h4 class="font-display font-bold text-white text-[13px] uppercase mb-1">Beach Tennis</h4>
                         <p class="text-zinc-500 text-[11px]">Locação e Turmas</p>
                     </div>
                 </div>
-                <a href="https://wa.me/5541992832936?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20aulas%20na%20areia%20do%20CT%20Maieski." target="_blank" class="inline-flex items-center gap-2 text-white font-display font-bold uppercase text-sm border-b-2 border-maieski-pink pb-1 hover:text-maieski-pink transition-colors">
-                    Agendar Aula na Areia <i class="fas fa-arrow-right"></i>
+                <a href="https://wa.me/5541992832936?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20aulas%20na%20areia%20do%20CT%20Maieski." target="_blank" class="inline-flex items-center gap-2 text-white font-display font-bold uppercase text-sm border-b-2 border-maieski-pink pb-1 hover:text-maieski-pink transition-colors group">
+                    Agendar Aula na Areia <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
                 </a>
             </div>
         </div>
@@ -267,8 +309,8 @@
                     <li class="flex items-center gap-4 text-zinc-300 font-medium"><i class="fas fa-user-ninja text-zinc-500"></i> Turmas Adultas</li>
                     <li class="flex items-center gap-4 text-zinc-300 font-medium"><i class="fas fa-child text-zinc-500"></i>Muay Thai Infantil</li>
                 </ul>
-                <a href="https://wa.me/5548984331032?text=Olá!%20Gostaria%20de%20marcar%20uma%20aula%20experimental%20na%20Elite%20Ferraz." target="_blank" class="inline-flex items-center gap-2 text-white font-display font-bold uppercase text-sm border-b-2 border-zinc-500 pb-1 hover:text-zinc-400 transition-colors">
-                    Aula Experimental <i class="fas fa-arrow-right"></i>
+                <a href="https://wa.me/5548984331032?text=Olá!%20Gostaria%20de%20marcar%20uma%20aula%20experimental%20na%20Elite%20Ferraz." target="_blank" class="inline-flex items-center gap-2 text-white font-display font-bold uppercase text-sm border-b-2 border-zinc-500 pb-1 hover:text-zinc-400 transition-colors group">
+                    Aula Experimental <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
                 </a>
             </div>
         </div>
@@ -291,8 +333,8 @@
                     <span class="bg-zinc-800 text-zinc-300 text-xs font-bold uppercase px-3 py-1.5 rounded border border-zinc-700">Treinadores Qualificados</span>
                     <span class="bg-zinc-800 text-zinc-300 text-xs font-bold uppercase px-3 py-1.5 rounded border border-zinc-700">Divisão por Idade</span>
                 </div>
-                <a href="https://wa.me/5551999415579?text=Olá!%20Gostaria%20de%20informações%20sobre%20a%20matrícula%20no%20Atlético%20GCR." target="_blank" class="inline-flex items-center gap-2 text-white font-display font-bold uppercase text-sm border-b-2 border-atletico-blue pb-1 hover:text-atletico-blue transition-colors">
-                    Informações de Matrícula <i class="fas fa-arrow-right"></i>
+                <a href="https://wa.me/5551999415579?text=Olá!%20Gostaria%20de%20informações%20sobre%20a%20matrícula%20no%20Atlético%20GCR." target="_blank" class="inline-flex items-center gap-2 text-white font-display font-bold uppercase text-sm border-b-2 border-atletico-blue pb-1 hover:text-atletico-blue transition-colors group">
+                    Informações de Matrícula <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
                 </a>
             </div>
         </div>
@@ -322,7 +364,7 @@
     <!-- EVENTOS -->
     <section id="eventos" class="py-16 md:py-24 bg-[#0f0f0f] border-y border-zinc-800">
         <div class="container mx-auto px-5 text-center max-w-4xl">
-            <div class="text-arena-neon font-display font-bold text-[10px] uppercase tracking-[0.2em] mb-4 inline-block">Locação de Espaço</div>
+            <div class="text-arena-neon font-display font-bold text-[10px] uppercase tracking-[0.2em] mb-4 inline-block border border-arena-neon/30 px-3 py-1 rounded">Locação de Espaço</div>
             <h2 class="font-display font-black text-4xl md:text-5xl uppercase text-white mb-6">O Palco do <span class="text-arena-neon">Seu Evento</span></h2>
             <p class="text-zinc-400 text-base leading-relaxed mb-10">
                 Confraternizações empresariais, aniversários ou torneios. Oferecemos infraestrutura autônoma completa: Área Gourmet, churrasqueira, vestiários e proteção coberta para que seu evento seja inesquecível.
@@ -359,61 +401,79 @@
         </div>
     </section>
 
-    <!-- AVALIAÇÕES -->
+    <!-- AVALIAÇÕES GOOGLE MAPS -->
     <section class="py-16 md:py-24 bg-[#0f0f0f] border-t border-zinc-800">
         <div class="container mx-auto px-5 md:px-10 text-center">
             
             <div class="mb-12">
-                <div class="text-google-blue font-display font-bold text-[10px] uppercase tracking-[0.2em] mb-2 inline-block"><i class="fas fa-comment"></i> Depoimentos</div>
+                <div class="text-google-blue font-display font-bold text-[11px] uppercase tracking-[0.2em] mb-2 inline-flex items-center gap-2 border border-google-blue/30 px-3 py-1 rounded bg-google-blue/5">
+                    <i class="fab fa-google text-google-blue"></i> Avaliações Reais no Google Maps
+                </div>
                 <h2 class="font-display font-black text-3xl md:text-4xl uppercase text-white mb-4">Aprovado por <span class="text-google-yellow">Quem Joga</span></h2>
-                <p class="text-zinc-500 text-xs mt-2 uppercase tracking-widest">Opinião dos nossos clientes</p>
+                
+                <div class="flex items-center justify-center gap-3 mt-4">
+                    <span class="text-3xl font-bold text-white">4.8</span>
+                    <div class="text-google-yellow text-lg flex gap-1">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <p class="text-zinc-500 text-xs mt-2 uppercase tracking-widest font-semibold">Avaliação oficial no Google Maps</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mb-10 max-w-6xl mx-auto">
-                <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800 flex flex-col justify-between">
+                <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800 flex flex-col justify-between card-hover">
                     <div>
-                        <div class="text-google-yellow text-sm mb-4">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-google-yellow text-sm flex gap-1">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <i class="fab fa-google text-zinc-600"></i>
                         </div>
                         <p class="text-zinc-300 text-sm leading-relaxed mb-6">"Com certeza o melhor lugar de Gov. Celso Ramos para reunir os amigos, bater uma bola e fazer aquela resenha, estrutura top, atendimento top... parabéns"</p>
                     </div>
                     <div class="flex items-center gap-4 pt-4 border-t border-zinc-800">
-                        <div class="w-10 h-10 rounded-full bg-zinc-800 text-arena-neon flex items-center justify-center font-display font-black">A</div>
+                        <div class="w-10 h-10 rounded-full bg-zinc-800 text-arena-neon flex items-center justify-center font-display font-black border border-zinc-700">A</div>
                         <div>
                             <h4 class="font-display font-bold text-xs text-white uppercase">Anderson Silveira</h4>
-                            <span class="text-[10px] text-zinc-500">Cliente</span>
+                            <span class="text-[10px] text-zinc-500">Avaliação do Google</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800 flex flex-col justify-between">
+                <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800 flex flex-col justify-between card-hover">
                     <div>
-                        <div class="text-google-yellow text-sm mb-4">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-google-yellow text-sm flex gap-1">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <i class="fab fa-google text-zinc-600"></i>
                         </div>
                         <p class="text-zinc-300 text-sm leading-relaxed mb-6">"Estacionamento com amplo espaço, atendimento nota 10!"</p>
                     </div>
                     <div class="flex items-center gap-4 pt-4 border-t border-zinc-800">
-                        <div class="w-10 h-10 rounded-full bg-zinc-800 text-maieski-pink flex items-center justify-center font-display font-black">T</div>
+                        <div class="w-10 h-10 rounded-full bg-zinc-800 text-maieski-pink flex items-center justify-center font-display font-black border border-zinc-700">T</div>
                         <div>
                             <h4 class="font-display font-bold text-xs text-white uppercase">Taisy Souza</h4>
-                            <span class="text-[10px] text-zinc-500">Cliente</span>
+                            <span class="text-[10px] text-zinc-500">Avaliação do Google</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800 flex flex-col justify-between">
+                <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800 flex flex-col justify-between card-hover">
                     <div>
-                        <div class="text-google-yellow text-sm mb-4">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-google-yellow text-sm flex gap-1">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <i class="fab fa-google text-zinc-600"></i>
                         </div>
                         <p class="text-zinc-300 text-sm leading-relaxed mb-6">"Super recomendo pra levar a família , atendimento nota mil"</p>
                     </div>
                     <div class="flex items-center gap-4 pt-4 border-t border-zinc-800">
-                        <div class="w-10 h-10 rounded-full bg-zinc-800 text-cafe-gold flex items-center justify-center font-display font-black">A</div>
+                        <div class="w-10 h-10 rounded-full bg-zinc-800 text-cafe-gold flex items-center justify-center font-display font-black border border-zinc-700">A</div>
                         <div>
                             <h4 class="font-display font-bold text-xs text-white uppercase">Angelo Gonsalves</h4>
-                            <span class="text-[10px] text-zinc-500">Cliente</span>
+                            <span class="text-[10px] text-zinc-500">Avaliação do Google</span>
                         </div>
                     </div>
                 </div>
@@ -454,7 +514,7 @@
                     </a>
                 </div>
 
-                <div class="w-full h-[350px] md:h-[450px] rounded-xl overflow-hidden shadow-2xl">
+                <div class="w-full h-[350px] md:h-[450px] rounded-xl overflow-hidden shadow-2xl card-hover">
                     <iframe title="Mapa de localização da Acassio Arena" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1252.666800603791!2d-48.60931429556765!3d-27.373318152911953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9527513aead88635%3A0xbb8e65a240e52d59!2sAcassio%20Arena%20Esporte%20e%20Lazer!5e0!3m2!1spt-BR!2sbr!4v1792092561783!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="grayscale hover:grayscale-0 transition-all duration-500"></iframe>
                 </div>
 
